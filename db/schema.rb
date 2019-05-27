@@ -10,6 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_03_17_203640) do
+
+  create_table "readings", force: :cascade do |t|
+    t.integer "thermostat_id"
+    t.integer "sequence_number"
+    t.float "temperature"
+    t.float "humidity"
+    t.float "battery_charge"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["thermostat_id"], name: "index_readings_on_thermostat_id"
+  end
+
+  create_table "thermostats", force: :cascade do |t|
+    t.string "household_token"
+    t.integer "sequence_number"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
